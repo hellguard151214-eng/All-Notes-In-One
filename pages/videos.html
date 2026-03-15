@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Clips - Pharm D Portal</title>
+    <meta name="description" content="Watch curated educational video demonstrations and lectures for Pharm D at FUUAST. Covers practical lab techniques, physiology, and pharmaceutics.">
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://pharmd-fuuast.com/pages/videos.html">
+    <meta property="og:title" content="Video Clips – Pharm D Portal FUUAST">
+    <meta property="og:description" content="Watch curated video clips covering practical experiments, complex physiological concepts, and virtual lab tours.">
+    <meta property="og:image" content="../img/fuuast_logo_transparent.png">
+    <meta property="og:site_name" content="Pharm D Portal FUUAST">
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Video Clips – Pharm D Portal FUUAST">
+    <meta name="twitter:description" content="Watch curated video clips covering practical experiments, complex physiological concepts, and virtual lab tours.">
+    <meta name="twitter:image" content="../img/fuuast_logo_transparent.png">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    
+    <style>
+        .page-header {
+            background-color: var(--text-main);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+            background-image: radial-gradient(circle at right top, var(--primary-dark) 0%, transparent 50%);
+        }
+        
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .video-card {
+            background: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: all var(--transition-smooth);
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .video-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .video-thumbnail {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background-color: var(--bg-main);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .video-thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .video-card:hover .video-thumbnail img {
+            transform: scale(1.05);
+        }
+
+        .play-button {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            background: rgba(14, 165, 233, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            backdrop-filter: blur(4px);
+            transition: all var(--transition-fast);
+            z-index: 2;
+        }
+
+        .video-thumbnail:hover .play-button {
+            transform: scale(1.1);
+            background: var(--primary);
+        }
+
+        .video-info {
+            padding: 1.5rem;
+        }
+
+        .video-info h3 {
+            font-size: 1.15rem;
+            margin-bottom: 0.5rem;
+            line-height: 1.4;
+        }
+
+        .video-meta {
+            display: flex;
+            justify-content: space-between;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Mock specific videos */
+        .vid-1 .video-thumbnail { background: linear-gradient(45deg, #fecaca, #fca5a5); }
+        .vid-2 .video-thumbnail { background: linear-gradient(45deg, #bbf7d0, #86efac); }
+        .vid-3 .video-thumbnail { background: linear-gradient(45deg, #bfdbfe, #93c5fd); }
+        /* Video Modal */
+        .video-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            z-index: 1000;
+            backdrop-filter: blur(8px);
+            align-items: center;
+            justify-content: center;
+        }
+
+        .video-modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            width: 90%;
+            max-width: 1000px;
+            position: relative;
+        }
+
+        .modal-content video {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 0 50px rgba(0,0,0,0.5);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .close-modal:hover {
+            transform: rotate(90deg);
+            color: var(--primary);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header class="navbar">
+        <div class="container nav-content">
+            <a href="../index.html" class="logo">
+                <img src="../img/fuuast_logo_transparent.png" alt="FUUAST Logo" class="logo-img"> Pharm D <span class="logo-accent">FUUAST</span>
+            </a>
+            <nav class="nav-links">
+                <a href="../index.html">Home</a>
+                
+                <div class="dropdown">
+                    <button class="dropbtn">Subjects <span class="arrow">▼</span></button>
+                    <div class="dropdown-content">
+                        <a href="pharmacutics.html">Pharmaceutics</a>
+                        <a href="physiology.html">Physiology</a>
+                        <a href="biochemistry.html">Biochemistry</a>
+                        <a href="organic_chemistry.html">Organic Chemistry</a>
+                        <a href="practicals.html">Practicals</a>
+                        <hr style="opacity: 0.1; margin: 0.5rem 0;">
+                        <a href="student_notes.html">Student Notes</a>
+                    </div>
+                </div>
+
+                <a href="exam_predictor.html">Exam Predictor</a>
+                <a href="teacher_guide.html">Teacher Guide</a>
+                <a href="videos.html" class="active">Video Clips</a>
+                <a href="upload.html" class="btn-primary btn-nav">Upload Content</a>
+            </nav>
+            
+            <button class="mobile-menu-btn">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <section class="page-header">
+            <div class="container">
+                <h1>Demonstrations & Lectures</h1>
+                <p style="color: rgba(255,255,255,0.8); max-width: 600px; margin: 0 auto;">Watch curated video clips covering practical experiments, complex physiological concepts, and virtual lab tours.</p>
+            </div>
+        </section>
+
+        <section class="section-padding">
+            <div class="container">
+                
+                <div class="video-grid">
+                    <!-- New Video: Lab Intro -->
+                    <div class="video-card" onclick="playVideo('../videos/1104272451-preview.mp4', 'Pharmacy Lab Introduction')">
+                        <div class="video-thumbnail">
+                            <div class="play-button">▶</div>
+                            <video muted loop style="object-fit: cover; width: 100%; height: 100%;">
+                                <source src="../videos/1104272451-preview.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                        <div class="video-info">
+                            <h3>Pharmacy Lab Introduction</h3>
+                            <div class="video-meta">
+                                <span>General</span>
+                                <span>00:30</span>
+                            </div>
+                            <p style="font-size: 0.9rem; margin:0;">A brief overview of the pharmaceutical laboratory environment and safety protocols.</p>
+                        </div>
+                    </div>
+                    <!-- Video 1 -->
+                    <div class="video-card vid-1">
+                        <div class="video-thumbnail">
+                            <div class="play-button">▶</div>
+                            <!-- In a real scenario, an actual image would go here -->
+                            <div style="font-size: 4rem; opacity: 0.5;">🫀</div>
+                        </div>
+                        <div class="video-info">
+                            <h3>Cardiac Cycle 3D Animation</h3>
+                            <div class="video-meta">
+                                <span>Physiology</span>
+                                <span>12:45</span>
+                            </div>
+                            <p style="font-size: 0.9rem; margin:0;">Detailed visual walkthrough of the heart's pumping action during a single cycle.</p>
+                        </div>
+                    </div>
+
+                    <!-- Video 2 -->
+                    <div class="video-card vid-2">
+                        <div class="video-thumbnail">
+                            <div class="play-button">▶</div>
+                            <div style="font-size: 4rem; opacity: 0.5;">🔬</div>
+                        </div>
+                        <div class="video-info">
+                            <h3>Titration Technique Setup</h3>
+                            <div class="video-meta">
+                                <span>Practicals</span>
+                                <span>08:20</span>
+                            </div>
+                            <p style="font-size: 0.9rem; margin:0;">Proper setup and execution of a basic acid-base titration in the lab.</p>
+                        </div>
+                    </div>
+
+                    <!-- Video 3 -->
+                    <div class="video-card vid-3">
+                        <div class="video-thumbnail">
+                            <div class="play-button">▶</div>
+                            <div style="font-size: 4rem; opacity: 0.5;">💊</div>
+                        </div>
+                        <div class="video-info">
+                            <h3>Tablet Manufacturing Process</h3>
+                            <div class="video-meta">
+                                <span>Pharmaceutics</span>
+                                <span>15:30</span>
+                            </div>
+                            <p style="font-size: 0.9rem; margin:0;">Industrial scale overview of granulation, compression, and coating.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="../img/fuuast_logo_transparent.png" alt="FUUAST Logo" class="logo-img-small"> <strong>Pharm D Portal</strong>
+                    <p>Empowering pharmacy students with accessible, high-quality educational resources.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <a href="../index.html">Home</a>
+                    <a href="student_notes.html">Student Notes</a>
+                    <a href="videos.html">Video Clips</a>
+                    <a href="upload.html">Upload Content</a>
+                    <a href="privacy.html">Privacy Policy</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2026 Pharm D Portal. For educational purposes only.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Video Modal -->
+    <div class="video-modal" id="videoModal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <video id="mainPlayer" controls>
+                <source src="" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <h2 id="modalTitle" style="color: white; margin-top: 1rem; font-weight: 500;"></h2>
+        </div>
+    </div>
+
+    <script src="../js/main.js"></script>
+    <script>
+        const modal = document.getElementById('videoModal');
+        const player = document.getElementById('mainPlayer');
+        const modalTitle = document.getElementById('modalTitle');
+        const closeModal = document.querySelector('.close-modal');
+
+        function playVideo(url, title) {
+            player.src = url;
+            modalTitle.textContent = title;
+            modal.classList.add('active');
+            player.play();
+        }
+
+        closeModal.onclick = () => {
+            modal.classList.remove('active');
+            player.pause();
+            player.src = "";
+        };
+
+        window.onclick = (event) => {
+            if (event.target == modal) {
+                closeModal.onclick();
+            }
+        };
+    </script>
+</body>
+</html>

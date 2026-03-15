@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document Viewer - Pharm D FUUAST</title>
+    <meta name="description" content="View and download lecture documents and notes from the Pharm D Portal at FUUAST.">
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://pharmd-fuuast.com/pages/viewer.html">
+    <meta property="og:title" content="Document Viewer – Pharm D Portal FUUAST">
+    <meta property="og:description" content="View and download lecture documents and notes from the Pharm D Portal at FUUAST.">
+    <meta property="og:image" content="../img/fuuast_logo_transparent.png">
+    <meta property="og:site_name" content="Pharm D Portal FUUAST">
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Document Viewer – Pharm D Portal FUUAST">
+    <meta name="twitter:description" content="View and download lecture documents and notes from the Pharm D Portal at FUUAST.">
+    <meta name="twitter:image" content="../img/fuuast_logo_transparent.png">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+            background-color: #1e293b;
+        }
+
+        .viewer-container {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            width: 100vw;
+        }
+
+        .viewer-header {
+            background-color: var(--bg-surface);
+            padding: 0.75rem 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: var(--shadow-md);
+            z-index: 10;
+        }
+
+        .viewer-title {
+            font-weight: 600;
+            color: var(--text-main);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            margin-right: 1rem;
+        }
+
+        .iframe-wrapper {
+            flex-grow: 1;
+            position: relative;
+            background-color: #525659;
+            /* Standard PDF viewer background */
+        }
+
+        #doc-iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .fallback-message {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
+            padding: 2rem;
+            max-width: 500px;
+        }
+
+        .fallback-message h2 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .fallback-message p {
+            color: #cbd5e1;
+            margin-bottom: 1.5rem;
+        }
+
+        .btn-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-main);
+            font-weight: 500;
+            cursor: pointer;
+            transition: color var(--transition-fast);
+        }
+
+        .btn-back:hover {
+            color: var(--primary);
+        }
+
+        @media (max-width: 640px) {
+            .viewer-header {
+                padding: 0.5rem 1rem;
+            }
+
+            .viewer-title {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="viewer-container">
+        <header class="viewer-header">
+            <a href="javascript:history.back()" class="btn-back">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="19" y1="12" x2="5" y2="12"></line>
+                    <polyline points="12 19 5 12 12 5"></polyline>
+                </svg>
+                Back to Subject
+            </a>
+            <div class="viewer-title" id="file-name">Loading Document...</div>
+            <div class="viewer-actions">
+                <a href="#" id="view-tab-link" class="btn-outline btn-nav" target="_blank">Open in New Tab</a>
+                <a href="#" id="download-link" class="btn-primary btn-nav" download>Download</a>
+            </div>
+        </header>
+
+        <div class="iframe-wrapper">
+            <iframe id="doc-iframe" src="" allow="autoplay"></iframe>
+            <div id="fallback" class="fallback-message" style="display: none;">
+                <div class="fallback-icon">📄</div>
+                <h2 id="fallback-title">Cannot Preview File</h2>
+                <p id="fallback-text">This file type (or local environment) might not support direct preview. Please
+                    download the file to view it.</p>
+                <div class="flex-buttons" style="justify-content: center;">
+                    <a href="#" id="fallback-download" class="btn-primary">Download File</a>
+                    <a href="#" id="fallback-newtab" class="btn-outline" target="_blank">Try in New Tab</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const params = new URLSearchParams(window.location.search);
+            const rawFileUrl = params.get('file');
+
+            if (!rawFileUrl) {
+                document.getElementById('file-name').textContent = 'No file specified';
+                return;
+            }
+
+            const fileUrl = rawFileUrl;
+            let fileName = params.get('name') || decodeURIComponent(fileUrl.split('/').pop());
+            let fileExt = fileName.split('.').pop().toLowerCase();
+
+            // If it's a blob/object URL, it might not have an extension in the path
+            if (fileUrl.startsWith('blob:') && !params.get('name')) {
+                fileExt = 'pdf'; // Default to PDF for upload previews if unknown
+            }
+
+            document.getElementById('file-name').textContent = fileName;
+
+            const downloadLink = document.getElementById('download-link');
+            const viewTabLink = document.getElementById('view-tab-link');
+            const fallbackDownload = document.getElementById('fallback-download');
+            const fallbackNewTab = document.getElementById('fallback-newtab');
+
+            // Encode the URL for the iframe src and links
+            const encodedUrl = encodeURI(fileUrl).replace(/#/g, '%23');
+
+            downloadLink.href = encodedUrl;
+            viewTabLink.href = encodedUrl;
+            fallbackDownload.href = encodedUrl;
+            fallbackNewTab.href = encodedUrl;
+
+            const iframe = document.getElementById('doc-iframe');
+            const fallback = document.getElementById('fallback');
+
+            // Check if we are running locally (file:// or localhost)
+            const isLocal = window.location.protocol === 'file:';
+            const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+
+            if (fileExt === 'pptx' || fileExt === 'ppt') {
+                // Browsers don't support PPTX natively. 
+                // We show a fallback unless it's a public URL we can send to Google Docs viewer.
+
+                if (isLocal || isLocalhost) {
+                    // Local environments can't use cloud viewers
+                    iframe.style.display = 'none';
+                    fallback.style.display = 'block';
+                    document.getElementById('fallback-title').textContent = "PowerPoint Preview Restricted (Local)";
+                    document.getElementById('fallback-text').innerHTML = "PowerPoint files cannot be previewed when running the website on <strong>localhost</strong> or as a <strong>local file</strong> because cloud viewers cannot access your private files. <br><br>Please download the file to view it on your computer.";
+                } else {
+                    // If hosted on a public server, try Google Docs viewer
+                    const publicUrl = window.location.href.substring(0, window.location.href.lastIndexOf('/') + 1) + encodedUrl;
+                    // We use a different approach for public URLs
+                    iframe.src = `https://docs.google.com/gview?url=${encodeURIComponent(publicUrl)}&embedded=true`;
+                    iframe.style.display = 'block';
+                    fallback.style.display = 'none';
+                }
+            } else if (fileExt === 'pdf') {
+                iframe.src = encodedUrl;
+
+                // Set a timeout to check if the iframe seems to have failed (rough estimate)
+                if (isLocal) {
+                    setTimeout(() => {
+                        // We can't actually detect the failure cleanly due to security,
+                        // but we can provide a persistent fallback message if they are waiting too long.
+                    }, 5000);
+                }
+            } else {
+                iframe.src = encodedUrl;
+            }
+        });
+    </script>
+</body>
+
+</html>

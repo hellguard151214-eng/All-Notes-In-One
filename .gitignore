@@ -1,0 +1,14 @@
+# Compiled scripts
+*.exe
+
+# Nested repo / student portal (duplicate of root)
+students portal/
+
+# Large uploaded content
+pdfs/
+videos/
+
+# OS files
+Thumbs.db
+.DS_Store
+desktop.ini

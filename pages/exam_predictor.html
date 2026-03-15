@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exam Probability Predictor - Pharm D Portal</title>
+    <meta name="description" content="Stay ahead with the Pharm D Exam Probability Predictor. Discover high-probability exam topics for Physiology, Pharmaceutics, Biochemistry, and Organic Chemistry.">
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://pharmd-fuuast.com/pages/exam_predictor.html">
+    <meta property="og:title" content="Exam Probability Predictor – Pharm D Portal FUUAST">
+    <meta property="og:description" content="Stay ahead with topics most likely to appear in your upcoming exams based on past patterns.">
+    <meta property="og:image" content="../img/fuuast_logo_transparent.png">
+    <meta property="og:site_name" content="Pharm D Portal FUUAST">
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Exam Probability Predictor – Pharm D Portal FUUAST">
+    <meta name="twitter:description" content="Stay ahead with topics most likely to appear in your upcoming exams based on past patterns.">
+    <meta name="twitter:image" content="../img/fuuast_logo_transparent.png">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+
+    <style>
+        .predictor-hero {
+            background: linear-gradient(135deg, var(--bg-main) 0%, #e0f2fe 100%);
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .predictor-grid {
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+
+        .predictor-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-md);
+            border: 1px solid rgba(14, 165, 233, 0.1);
+        }
+
+        .predictor-card h2 {
+            border-bottom: 2px solid var(--primary-light);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+        }
+
+        .topic-list {
+            list-style: none;
+        }
+
+        .topic-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .topic-item:last-child {
+            border-bottom: none;
+        }
+
+        .probability-badge {
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .prob-high {
+            background: #fee2e2;
+            color: #ef4444;
+        }
+
+        .prob-medium {
+            background: #fef3c7;
+            color: #d97706;
+        }
+
+        .prob-low {
+            background: #d1fae5;
+            color: #059669;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header Navigation -->
+    <header class="navbar">
+        <div class="container nav-content">
+            <a href="../index.html" class="logo">
+                <img src="../img/fuuast_logo_transparent.png" alt="FUUAST Logo" class="logo-img"> Pharm D <span
+                    class="logo-accent">FUUAST</span>
+            </a>
+            <nav class="nav-links">
+                <a href="../index.html">Home</a>
+                <div class="dropdown">
+                    <button class="dropbtn">Subjects <span class="arrow">▼</span></button>
+                    <div class="dropdown-content">
+                        <a href="pharmacutics.html">Pharmaceutics</a>
+                        <a href="physiology.html">Physiology</a>
+                        <a href="biochemistry.html">Biochemistry</a>
+                        <a href="organic_chemistry.html">Organic Chemistry</a>
+                        <a href="practicals.html">Practicals</a>
+                        <hr style="opacity: 0.1; margin: 0.5rem 0;">
+                        <a href="student_notes.html">Student Notes</a>
+                    </div>
+                </div>
+                <a href="exam_predictor.html" class="active">AI Exam Predictor</a>
+                <a href="videos.html">Video Clips</a>
+                <a href="upload.html" class="btn-primary btn-nav">Upload Content</a>
+            </nav>
+            <button class="mobile-menu-btn">
+                <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <section class="predictor-hero">
+            <div class="container">
+                <span class="icon-large">📈</span>
+                <h1>Exam Probability Predictor</h1>
+                <p>Stay ahead with topics most likely to appear in your upcoming exams based on past patterns.</p>
+            </div>
+        </section>
+
+        <section class="section-padding">
+            <div class="container">
+                <div class="grid predictor-grid">
+                    <!-- Physiology -->
+                    <div class="predictor-card">
+                        <h2>1. Physiology</h2>
+                        <ul class="topic-list">
+                            <li class="topic-item"><span>need permission to run</span> <span
+                                    class="probability-badge prob-high">High</span></li>
+                            <li class="topic-item"><span>....</span> <span
+                                    class="probability-badge prob-high">High</span></li>
+                            <li class="topic-item"><span>....</span> <span
+                                    class="probability-badge prob-medium">Medium</span></li>
+                        </ul>
+                    </div>
+
+                    <!-- Pharmaceutics -->
+                    <div class="predictor-card">
+                        <h2>2. Pharmaceutics</h2>
+                        <ul class="topic-list">
+                            <li class="topic-item"><span>Difference between primary and secondary litrature</span> <span
+                                    class="probability-badge prob-high">High</span></li>
+                            <li class="topic-item"><span>difference between formulary and compendia</span> <span
+                                    class="probability-badge prob-medium">Medium</span></li>
+                            <li class="topic-item"><span>difference between tablet and capsule</span> <span
+                                    class="probability-badge prob-low">Low</span></li>
+                        </ul>
+                    </div>
+
+                    <!-- Biochemistry -->
+                    <div class="predictor-card">
+                        <h2>3. Biochemistry</h2>
+                        <ul class="topic-list">
+                            <li class="topic-item"><span>Krebs Cycle</span> <span
+                                    class="probability-badge prob-high">High</span></li>
+                            <li class="topic-item"><span>Glycolysis</span> <span
+                                    class="probability-badge prob-high">High</span></li>
+                            <li class="topic-item"><span>gluconeogenisis</span> <span
+                                    class="probability-badge prob-medium">Medium</span></li>
+                        </ul>
+                    </div>
+
+                    <!-- Organic Chemistry -->
+                    <div class="predictor-card">
+                        <h2>4. Organic Chemistry</h2>
+                        <ul class="topic-list">
+                            <li class="topic-item"><span>Aromaticity</span> <span
+                                    class="probability-badge prob-high">High</span></li>
+                            <li class="topic-item"><span>Nucleophilic Substitution</span> <span
+                                    class="probability-badge prob-high">High</span></li>
+                            <li class="topic-item"><span>Stereochemistry</span> <span
+                                    class="probability-badge prob-medium">Medium</span></li>
+                        </ul>
+                    </div>
+
+                    <!-- Others -->
+                    <div class="predictor-card">
+                        <h2>5. Others</h2>
+                        <ul class="topic-list">
+                            <li class="topic-item"><span>CV</span> <span
+                                    class="probability-badge prob-medium">Medium</span></li>
+                            <li class="topic-item"><span>letter</span> <span
+                                    class="probability-badge prob-low">Low</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="../img/fuuast_logo_transparent.png" alt="FUUAST Logo" class="logo-img-small"> <strong>Pharm D
+                        Portal</strong>
+                    <p>Empowering pharmacy students with accessible, high-quality educational resources.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <a href="../index.html">Home</a>
+                    <a href="student_notes.html">Student Notes</a>
+                    <a href="videos.html">Video Clips</a>
+                    <a href="upload.html">Upload Content</a>
+                    <a href="privacy.html">Privacy Policy</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2026 Pharm D Portal. For educational purposes only.
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+</body>
+
+</html>

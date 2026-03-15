@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pharmaceutics - Pharm D Portal</title>
+    <meta name="description" content="Download Pharmaceutics lecture slides for Pharm D at FUUAST. Covers introduction, literature, colligative properties, solutions and more.">
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://pharmd-fuuast.com/pages/pharmacutics.html">
+    <meta property="og:title" content="Pharmaceutics – Pharm D Portal FUUAST">
+    <meta property="og:description" content="Study the formulation, manufacture, and stability of drugs. Download official Pharmaceutics lecture presentations.">
+    <meta property="og:image" content="../img/pharmacutics Beaver.png">
+    <meta property="og:site_name" content="Pharm D Portal FUUAST">
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Pharmaceutics – Pharm D Portal FUUAST">
+    <meta name="twitter:description" content="Study the formulation, manufacture, and stability of drugs. Download official Pharmaceutics lecture presentations.">
+    <meta name="twitter:image" content="../img/pharmacutics Beaver.png">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    
+    <style>
+        .subject-hero {
+            background: linear-gradient(135deg, var(--bg-main) 0%, #dff6ff 100%);
+            padding: 4rem 0;
+            text-align: center;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+        .subject-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            animation: float 4s ease-in-out infinite;
+        }
+        .pdf-list {
+            list-style: none;
+            display: grid;
+            gap: 1rem;
+        }
+        .pdf-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: white;
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-sm);
+            transition: all var(--transition-fast);
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        .pdf-item:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--primary-light);
+        }
+        .pdf-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .pdf-icon {
+            font-size: 2rem;
+            color: #ef4444; /* PDF Red */
+        }
+        .pdf-details h4 {
+            margin-bottom: 0.25rem;
+        }
+        .pdf-details p {
+            margin-bottom: 0;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header class="navbar">
+        <div class="container nav-content">
+            <a href="../index.html" class="logo">
+                <img src="../img/fuuast_logo_transparent.png" alt="FUUAST Logo" class="logo-img"> Pharm D <span class="logo-accent">FUUAST</span>
+            </a>
+            <nav class="nav-links">
+                <a href="../index.html">Home</a>
+                
+                <div class="dropdown">
+                    <button class="dropbtn">Subjects <span class="arrow">▼</span></button>
+                    <div class="dropdown-content">
+                        <a href="pharmacutics.html" class="active">Pharmaceutics</a>
+                        <a href="physiology.html">Physiology</a>
+                        <a href="biochemistry.html">Biochemistry</a>
+                        <a href="organic_chemistry.html">Organic Chemistry</a>
+                        <a href="practicals.html">Practicals</a>
+                        <hr style="opacity: 0.1; margin: 0.5rem 0;">
+                        <a href="student_notes.html">Student Notes</a>
+                    </div>
+                </div>
+
+                <a href="exam_predictor.html">Exam Predictor</a>
+                <a href="videos.html">Video Clips</a>
+                <a href="upload.html" class="btn-primary btn-nav">Upload Content</a>
+            </nav>
+            
+            <!-- Mobile Menu Toggle -->
+            <button class="mobile-menu-btn">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <section class="subject-hero">
+            <div class="container">
+                <div class="subject-icon"><img src="../img/pharmacutics%20Beaver.png" alt="Pharmaceutics" class="subject-icon-img"></div>
+                <h1>Pharmaceutics</h1>
+                <p>Explore the process of turning a new chemical entity or old drugs into a medication to be used safely and effectively by patients.</p>
+            </div>
+        </section>
+
+        <section class="section-padding">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Lecture PDFs</h2>
+                    <p>Download official lecture materials and presentations.</p>
+                </div>
+                
+                <div class="ad-region ad-sidebar">
+            Advertisement Space (Sidebar)
+        </div>
+
+        <ul class="pdf-list" id="pdf-list-container" data-subject="pharmacutics">
+            <!-- PDF items will be injected here dynamically by js/pdf-loader.js -->
+        </ul>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="../img/fuuast_logo_transparent.png" alt="FUUAST Logo" class="logo-img-small"> <strong>Pharm D Portal</strong>
+                    <p>Empowering pharmacy students with accessible, high-quality educational resources.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <a href="../index.html">Home</a>
+                    <a href="student_notes.html">Student Notes</a>
+                    <a href="videos.html">Video Clips</a>
+                    <a href="upload.html">Upload Content</a>
+                    <a href="privacy.html">Privacy Policy</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2026 Pharm D Portal. For educational purposes only.
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/pdf-data.js"></script>
+    <script src="../js/pdf-loader.js"></script>
+    <script src="../js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Notes - Pharm D Portal</title>
+    <meta name="description" content="Browse and download student-contributed notes and study materials for Pharm D at FUUAST. Community-driven guides for Pharmaceutics, Biochemistry, Physiology, and more.">
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://pharmd-fuuast.com/pages/student_notes.html">
+    <meta property="og:title" content="Student Notes – Pharm D Portal FUUAST">
+    <meta property="og:description" content="Access notes and study materials shared by your fellow Pharm D students at FUUAST.">
+    <meta property="og:image" content="../img/fuuast_logo_transparent.png">
+    <meta property="og:site_name" content="Pharm D Portal FUUAST">
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Student Notes – Pharm D Portal FUUAST">
+    <meta name="twitter:description" content="Access notes and study materials shared by your fellow Pharm D students at FUUAST.">
+    <meta name="twitter:image" content="../img/fuuast_logo_transparent.png">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    
+    <style>
+        .page-header {
+            background-color: var(--primary-dark);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+        .filter-bar {
+            background: white;
+            padding: 1rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-sm);
+            margin-top: -2rem;
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        .filter-btn {
+            background: none;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 500;
+            color: var(--text-muted);
+            transition: all var(--transition-fast);
+        }
+        .filter-btn.active, .filter-btn:hover {
+            background: var(--primary-light);
+            color: var(--text-main);
+        }
+        
+        .notes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        .note-card {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            box-shadow: var(--shadow-sm);
+            transition: all var(--transition-smooth);
+            border: 1px solid rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+        }
+        .note-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary-light);
+        }
+        .note-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+        .subject-badge {
+            background: var(--bg-light);
+            color: var(--primary-dark);
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+        }
+        .author {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .author-avatar {
+            width: 24px;
+            height: 24px;
+            background: var(--secondary-light);
+            border-radius: 50%;
+            display: inline-block;
+            text-align: center;
+            line-height: 24px;
+            color: var(--text-main);
+            font-weight: bold;
+            font-size: 0.7rem;
+        }
+        .note-card h3 { font-size: 1.1rem; }
+        .note-footer {
+            margin-top: auto;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(0,0,0,0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header class="navbar">
+        <div class="container nav-content">
+            <a href="../index.html" class="logo">
+                <img src="../img/fuuast_logo_transparent.png" alt="FUUAST Logo" class="logo-img"> Pharm D <span class="logo-accent">FUUAST</span>
+            </a>
+            <nav class="nav-links">
+                <a href="../index.html">Home</a>
+                
+                <div class="dropdown">
+                    <button class="dropbtn">Subjects <span class="arrow">▼</span></button>
+                    <div class="dropdown-content">
+                        <a href="pharmacutics.html">Pharmaceutics</a>
+                        <a href="physiology.html">Physiology</a>
+                        <a href="biochemistry.html">Biochemistry</a>
+                        <a href="organic_chemistry.html">Organic Chemistry</a>
+                        <a href="practicals.html">Practicals</a>
+                        <hr style="opacity: 0.1; margin: 0.5rem 0;">
+                        <a href="student_notes.html" class="active">Student Notes</a>
+                    </div>
+                </div>
+
+                <a href="exam_predictor.html">Exam Predictor</a>
+                <a href="videos.html">Video Clips</a>
+                <a href="upload.html" class="btn-primary btn-nav">Upload Content</a>
+            </nav>
+            
+            <button class="mobile-menu-btn">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <section class="page-header">
+            <div class="container">
+                <h1>Community Notes</h1>
+                <p style="color: rgba(255,255,255,0.8);">Study materials shared by your peers.</p>
+            </div>
+        </section>
+
+        <section class="section-padding" style="padding-top: 0;">
+            <div class="container">
+                <!-- Filters -->
+                <div class="filter-bar">
+                    <button class="filter-btn active">All Notes</button>
+                    <button class="filter-btn">Pharmaceutics</button>
+                    <button class="filter-btn">Physiology</button>
+                    <button class="filter-btn">Biochemistry</button>
+                    <button class="filter-btn">Organic Chemistry</button>
+                </div>
+
+                <!-- Notes Grid -->
+                <div class="notes-grid">
+                    <!-- New Note: CV Workshop -->
+                    <div class="note-card">
+                        <div class="note-header">
+                            <span class="subject-badge">English</span>
+                            <span title="File Size">💾 0.15 MB</span>
+                        </div>
+                        <h3>Workshop Paper on Perfect Curriculum Vitae</h3>
+                        <div class="author">
+                            <span class="author-avatar">P</span> Pharm D Admin
+                        </div>
+                        <div class="note-footer">
+                            <span style="font-size:0.8rem; color: var(--text-muted);">Uploaded Just Now</span>
+                            <div class="pdf-actions">
+                                <a href="viewer.html?file=../pdfs/english/Workshop_Paper_on_Perfect_Curriculum_Vit-49507644.pdf" class="btn-primary" style="padding: 0.4rem 0.8rem; font-size:0.9rem;">Read</a>
+                                <a href="../pdfs/english/Workshop_Paper_on_Perfect_Curriculum_Vit-49507644.pdf" download class="btn-outline" style="padding: 0.4rem 0.8rem; font-size:0.9rem;">Download</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Note Card 1 -->
+                    <div class="note-card">
+                        <div class="note-header">
+                            <span class="subject-badge">Pharmaceutics</span>
+                            <span title="File Size">💾 1.2 MB</span>
+                        </div>
+                        <h3>Midterm Study Guide - Complete Summary</h3>
+                        <div class="author">
+                            <span class="author-avatar">S</span> Sarah Jenkins
+                        </div>
+                        <div class="note-footer">
+                            <span style="font-size:0.8rem; color: var(--text-muted);">Uploaded 2 days ago</span>
+                            <div class="pdf-actions">
+                                <a href="viewer.html?file=#" class="btn-primary" style="padding: 0.4rem 0.8rem; font-size:0.9rem;">Read</a>
+                                <a href="#" class="btn-outline" style="padding: 0.4rem 0.8rem; font-size:0.9rem;">Download</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Note Card 2 -->
+                    <div class="note-card">
+                        <div class="note-header">
+                            <span class="subject-badge">Biochemistry</span>
+                            <span title="File Size">💾 4.5 MB</span>
+                        </div>
+                        <h3>Metabolism Pathway Maps (Handwritten)</h3>
+                        <div class="author">
+                            <span class="author-avatar">A</span> Ali Khan
+                        </div>
+                        <div class="note-footer">
+                            <span style="font-size:0.8rem; color: var(--text-muted);">Uploaded 1 week ago</span>
+                            <div class="pdf-actions">
+                                <a href="viewer.html?file=#" class="btn-primary" style="padding: 0.4rem 0.8rem; font-size:0.9rem;">Read</a>
+                                <a href="#" class="btn-outline" style="padding: 0.4rem 0.8rem; font-size:0.9rem;">Download</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Note Card 3 -->
+                    <div class="note-card">
+                        <div class="note-header">
+                            <span class="subject-badge">Physiology</span>
+                            <span title="File Size">💾 2.1 MB</span>
+                        </div>
+                        <h3>Renal System Flashcards Summary</h3>
+                        <div class="author">
+                            <span class="author-avatar">E</span> Emma W.
+                        </div>
+                        <div class="note-footer">
+                            <span style="font-size:0.8rem; color: var(--text-muted);">Uploaded 2 weeks ago</span>
+                            <div class="pdf-actions">
+                                <a href="viewer.html?file=#" class="btn-primary" style="padding: 0.4rem 0.8rem; font-size:0.9rem;">Read</a>
+                                <a href="#" class="btn-outline" style="padding: 0.4rem 0.8rem; font-size:0.9rem;">Download</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="../img/fuuast_logo_transparent.png" alt="FUUAST Logo" class="logo-img-small"> <strong>Pharm D Portal</strong>
+                    <p>Empowering pharmacy students with accessible, high-quality educational resources.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <a href="../index.html">Home</a>
+                    <a href="student_notes.html">Student Notes</a>
+                    <a href="videos.html">Video Clips</a>
+                    <a href="upload.html">Upload Content</a>
+                    <a href="privacy.html">Privacy Policy</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2026 Pharm D Portal. For educational purposes only.
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Materials - Pharm D Portal</title>
+    <meta name="description" content="Contribute to the Pharm D FUUAST community by uploading your lecture notes, PDFs, and study materials for fellow students.">
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://pharmd-fuuast.com/pages/upload.html">
+    <meta property="og:title" content="Upload Materials – Pharm D Portal FUUAST">
+    <meta property="og:description" content="Share your lecture notes and PDFs with fellow Pharm D students at FUUAST. Help build the community knowledge base.">
+    <meta property="og:image" content="../img/fuuast_logo_transparent.png">
+    <meta property="og:site_name" content="Pharm D Portal FUUAST">
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Upload Materials – Pharm D Portal FUUAST">
+    <meta name="twitter:description" content="Share your lecture notes and PDFs with fellow Pharm D students at FUUAST. Help build the community knowledge base.">
+    <meta name="twitter:image" content="../img/fuuast_logo_transparent.png">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    
+    <style>
+        .upload-section {
+            background-color: var(--bg-main);
+            min-height: calc(100vh - 80px); /* rough header offset */
+            display: flex;
+            align-items: center;
+            padding: 4rem 0;
+        }
+
+        .upload-card {
+            background: white;
+            border-radius: var(--border-radius-lg);
+            padding: 3rem;
+            box-shadow: var(--shadow-xl);
+            max-width: 600px;
+            margin: 0 auto;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .upload-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .upload-header h1 {
+            font-size: 2rem;
+            color: var(--primary-dark);
+        }
+
+        .upload-area {
+            border: 2px dashed #cbd5e1;
+            border-radius: var(--border-radius);
+            padding: 3rem 2rem;
+            text-align: center;
+            background: var(--bg-main);
+            transition: all var(--transition-fast);
+            cursor: pointer;
+            position: relative;
+        }
+
+        .upload-area:hover, .upload-area.dragover {
+            border-color: var(--primary);
+            background: var(--bg-light);
+        }
+
+        .upload-icon {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .upload-text {
+            font-weight: 500;
+            color: var(--text-main);
+            margin-bottom: 0.5rem;
+        }
+
+        .upload-subtext {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+        }
+
+        .file-input {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .form-group {
+            margin-top: 2rem;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--text-main);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid #cbd5e1;
+            border-radius: var(--border-radius);
+            font-family: inherit;
+            font-size: 1rem;
+            transition: border-color var(--transition-fast);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.1);
+        }
+
+        .submit-btn {
+            width: 100%;
+            margin-top: 2rem;
+        }
+
+        /* success mock state */
+        .success-state {
+            display: none;
+            text-align: center;
+            padding: 2rem 0;
+        }
+        
+        .success-icon {
+            font-size: 4rem;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+            animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+
+        @keyframes popIn {
+            0% { transform: scale(0); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header class="navbar">
+        <div class="container nav-content">
+            <a href="../index.html" class="logo">
+                <img src="../img/fuuast_logo_transparent.png" alt="FUUAST Logo" class="logo-img"> Pharm D <span class="logo-accent">FUUAST</span>
+            </a>
+            <nav class="nav-links">
+                <a href="../index.html">Home</a>
+                
+                <div class="dropdown">
+                    <button class="dropbtn">Subjects <span class="arrow">▼</span></button>
+                    <div class="dropdown-content">
+                        <a href="pharmacutics.html">Pharmaceutics</a>
+                        <a href="physiology.html">Physiology</a>
+                        <a href="biochemistry.html">Biochemistry</a>
+                        <a href="organic_chemistry.html">Organic Chemistry</a>
+                        <a href="practicals.html">Practicals</a>
+                        <hr style="opacity: 0.1; margin: 0.5rem 0;">
+                        <a href="student_notes.html">Student Notes</a>
+                    </div>
+                </div>
+
+                <a href="exam_predictor.html">Exam Predictor</a>
+                <a href="teacher_guide.html">Teacher Guide</a>
+                <a href="videos.html">Video Clips</a>
+                <a href="upload.html" class="btn-primary btn-nav active">Upload Content</a>
+            </nav>
+            
+            <button class="mobile-menu-btn">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="upload-section">
+        <div class="container">
+            <div class="upload-card">
+                
+                <div id="uploadFormContainer">
+                    <div class="upload-header">
+                        <h1>Share Materials</h1>
+                        <p>Upload your own lecture notes or PDFs to help fellow students.</p>
+                    </div>
+
+                    <form id="mockUploadForm">
+                        <div class="upload-area" id="dropZone">
+                            <div class="upload-icon">📁</div>
+                            <div class="upload-text">Drag & drop your PDF here</div>
+                            <div class="upload-subtext">or click to browse files (Max 10MB)</div>
+                            <button type="button" class="btn-secondary">Browse Files</button>
+                            <input type="file" class="file-input" id="fileInput" accept=".pdf">
+                        </div>
+                        <div id="filePreviewContainer" style="margin-top: 1.5rem; text-align: center; display: none;">
+                            <div id="fileNameDisplay" style="font-weight: 600; color: var(--text-main); margin-bottom: 1rem;"></div>
+                            <a href="#" id="previewBtn" class="btn-primary" style="background: var(--secondary); box-shadow: 0 4px 14px 0 rgba(20, 184, 166, 0.39);">Preview Document</a>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="title">Document Title</label>
+                            <input type="text" id="title" class="form-control" placeholder="e.g., Chapter 4 Summarized Notes" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="subject">Subject Category</label>
+                            <select id="subject" class="form-control" required>
+                                <option value="" disabled selected>Select a subject...</option>
+                                <option value="pharmaceutics">Pharmaceutics</option>
+                                <option value="physiology">Physiology</option>
+                                <option value="biochemistry">Biochemistry</option>
+                                <option value="organic_chemistry">Organic Chemistry</option>
+                                <option value="practicals">Practicals</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="author">Your Name (Optional)</label>
+                            <input type="text" id="author" class="form-control" placeholder="Jane Doe">
+                        </div>
+
+                        <button type="submit" class="btn-primary submit-btn">Upload Document</button>
+                    </form>
+                </div>
+
+                <!-- Success State (Hidden by default) -->
+                <div id="successState" class="success-state">
+                    <div class="success-icon">✅</div>
+                    <h2>Upload Successful!</h2>
+                    <p>Thank you for contributing. Your document has been submitted and will appear in the Student Notes section shortly.</p>
+                    <button id="uploadMoreBtn" class="btn-outline mt-4">Upload Another File</button>
+                    <a href="student_notes.html" class="btn-primary mt-4" style="margin-left: 1rem;">View Notes</a>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="../img/fuuast_logo_transparent.png" alt="FUUAST Logo" class="logo-img-small"> <strong>Pharm D Portal</strong>
+                    <p>Empowering pharmacy students with accessible, high-quality educational resources.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <a href="../index.html">Home</a>
+                    <a href="student_notes.html">Student Notes</a>
+                    <a href="videos.html">Video Clips</a>
+                    <a href="upload.html">Upload Content</a>
+                    <a href="privacy.html">Privacy Policy</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2026 Pharm D Portal. For educational purposes only.
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script>
+        // Mock upload functionality for demonstration
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.getElementById('mockUploadForm');
+            const fileInput = document.getElementById('fileInput');
+            const fileNameDisplay = document.getElementById('fileNameDisplay');
+            const dropZone = document.getElementById('dropZone');
+            
+            const formContainer = document.getElementById('uploadFormContainer');
+            const successState = document.getElementById('successState');
+            const upMoreBtn = document.getElementById('uploadMoreBtn');
+
+            // Handle file selection display
+            fileInput.addEventListener('change', (e) => {
+                if(e.target.files.length > 0) {
+                    const file = e.target.files[0];
+                    fileNameDisplay.textContent = 'Selected: ' + file.name;
+                    document.getElementById('filePreviewContainer').style.display = 'block';
+                    
+                    // Create object URL for preview
+                    const fileUrl = URL.createObjectURL(file);
+                    const previewBtn = document.getElementById('previewBtn');
+                    
+                    // Link to our viewer with the blob URL
+                    previewBtn.href = `viewer.html?file=${encodeURIComponent(fileUrl)}&name=${encodeURIComponent(file.name)}`;
+                    
+                    // Also handle title auto-fill
+                    const titleInput = document.getElementById('title');
+                    if(!titleInput.value) {
+                        titleInput.value = file.name.replace(/\.[^/.]+$/, "");
+                    }
+                } else {
+                    document.getElementById('filePreviewContainer').style.display = 'none';
+                }
+            });
+
+            // Handle form submit (mocking a successful upload)
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                // normally here you would send the Form Data to a backend API
+                
+                // Show success state
+                formContainer.style.display = 'none';
+                successState.style.display = 'block';
+            });
+
+            // Reset form
+            upMoreBtn.addEventListener('click', () => {
+                form.reset();
+                fileNameDisplay.style.display = 'none';
+                successState.style.display = 'none';
+                formContainer.style.display = 'block';
+            });
+            
+            // Drag and drop visuals
+            dropZone.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                dropZone.classList.add('dragover');
+            });
+            
+            ['dragleave', 'dragend', 'drop'].forEach(evt => {
+                dropZone.addEventListener(evt, (e) => {
+                    dropZone.classList.remove('dragover');
+                });
+            });
+        });
+    </script>
+</body>
+</html>

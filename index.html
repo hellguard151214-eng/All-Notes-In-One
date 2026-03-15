@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pharm D Portal</title>
+    <meta name="description" content="The ultimate hub for Pharm D students at FUUAST. Access lecture PDFs, student notes, and video clips for Pharmaceutics, Physiology, Biochemistry, Organic Chemistry, and Practicals.">
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://pharmd-fuuast.com/">
+    <meta property="og:title" content="Pharm D Portal – FUUAST">
+    <meta property="og:description" content="The ultimate hub for Pharm D students. Access lecture PDFs, student notes, and video clips seamlessly.">
+    <meta property="og:image" content="img/fuuast_logo_transparent.png">
+    <meta property="og:site_name" content="Pharm D Portal FUUAST">
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Pharm D Portal – FUUAST">
+    <meta name="twitter:description" content="The ultimate hub for Pharm D students. Access lecture PDFs, student notes, and video clips seamlessly.">
+    <meta name="twitter:image" content="img/fuuast_logo_transparent.png">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- Header Navigation -->
+    <header class="navbar">
+        <div class="container nav-content">
+            <a href="index.html" class="logo">
+                <img src="img/fuuast_logo_transparent.png" alt="FUUAST Logo" class="logo-img"> Pharm D <span class="logo-accent">FUUAST</span>
+            </a>
+            <nav class="nav-links">
+                <a href="index.html" class="active">Home</a>
+
+                <div class="dropdown">
+                    <button class="dropbtn">Subjects <span class="arrow">▼</span></button>
+                    <div class="dropdown-content">
+                        <a href="pages/pharmacutics.html">Pharmaceutics</a>
+                        <a href="pages/physiology.html">Physiology</a>
+                        <a href="pages/biochemistry.html">Biochemistry</a>
+                        <a href="pages/organic_chemistry.html">Organic Chemistry</a>
+                        <a href="pages/practicals.html">Practicals</a>
+                        <hr style="opacity: 0.1; margin: 0.5rem 0;">
+                        <a href="pages/student_notes.html">Student Notes</a>
+                    </div>
+                </div>
+
+                <a href="pages/exam_predictor.html">Exam Predictor</a>
+                <a href="pages/teacher_guide.html">Teacher Guide</a>
+                <a href="pages/videos.html">Video Clips</a>
+                <a href="pages/upload.html" class="btn-primary btn-nav">Upload Content</a>
+            </nav>
+
+            <!-- Mobile Menu Toggle -->
+            <button class="mobile-menu-btn" aria-label="Toggle Navigation">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container hero-content">
+                <h1>The Future of Pharmacy Education.</h1>
+                <p>Welcome to the ultimate hub for Pharm D students. Access lecture PDFs, student-provided notes, and
+                    interactive video clips seamlessly.</p>
+                <div class="hero-buttons">
+                    <a href="#subjects" class="btn-primary btn-large">Explore Subjects</a>
+                    <a href="pages/upload.html" class="btn-secondary btn-large">Share Materials</a>
+                </div>
+            </div>
+            <!-- Decorative Background Elements -->
+            <div class="hero-bg-shapes">
+                <div class="shape shape-1"></div>
+                <div class="shape shape-2"></div>
+            </div>
+        </section>
+        
+        <!-- Search Section -->
+        <div class="search-container">
+            <div class="search-box">
+                <span class="search-icon">🔍</span>
+                <input type="text" class="search-input" placeholder="Search for subjects, topics, or notes..." id="mainSearch">
+            </div>
+            <div id="searchResults" class="search-results">
+                <!-- Results will be injected here by JS -->
+            </div>
+        </div>
+
+        <!-- Subjects Grid Preview -->
+        <section id="subjects" class="section-padding subjects-preview">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Core Subjects</h2>
+                    <p>Access carefully curated lecture materials and resources.</p>
+                </div>
+
+                <div class="grid cards-grid">
+                    <a href="pages/pharmacutics.html" class="card subject-card">
+                        <div class="card-icon"><img src="img/pharmacutics%20Beaver.png" alt="Pharmaceutics"></div>
+                        <h3>Pharmaceutics</h3>
+                        <p>Study of formulation, manufacture, and stability of drugs.</p>
+                    </a>
+
+                    <a href="pages/physiology.html" class="card subject-card">
+                        <div class="card-icon"><img src="img/physiology%20octopus.png" alt="Physiology"></div>
+                        <h3>Physiology</h3>
+                        <p>Understanding the normal functions of the human body.</p>
+                    </a>
+
+                    <a href="pages/biochemistry.html" class="card subject-card">
+                        <div class="card-icon"><img src="img/biochemistry%20chamelion.png" alt="Biochemistry"></div>
+                        <h3>Biochemistry</h3>
+                        <p>Chemical processes within and relating to living organisms.</p>
+                    </a>
+
+                    <a href="pages/organic_chemistry.html" class="card subject-card">
+                        <div class="card-icon"><img src="img/organic_chemistry.png" alt="Organic Chemistry"></div>
+                        <h3>Organic Chemistry</h3>
+                        <p>Structure, properties, and reactions of organic compounds.</p>
+                    </a>
+
+                    <a href="pages/practicals.html" class="card subject-card">
+                        <div class="card-icon"><img src="img/practical%20horse.png" alt="Practicals"></div>
+                        <h3>Practicals</h3>
+                        <p>Laboratory techniques, procedures, and experiment guides.</p>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Student Resources Preview -->
+        <section class="section-padding student-resources bg-light">
+            <div class="container">
+                <div class="grid layout-2-col align-center">
+                    <div class="text-content">
+                        <h2>Learning Together</h2>
+                        <p>Access notes provided by your peers or watch carefully selected video clips to deepen your
+                            understanding.</p>
+                        <ul class="feature-list">
+                            <li>Community-driven study guides</li>
+                            <li>Interactive video demonstrations</li>
+                            <li>Easy upload and sharing portal</li>
+                        </ul>
+                        <div class="flex-buttons mt-4">
+                            <a href="pages/student_notes.html" class="btn-primary">Browse Notes</a>
+                            <a href="pages/videos.html" class="btn-outline">Watch Videos</a>
+                        </div>
+                    </div>
+                    <div class="image-content glass-panel">
+                        <!-- Placeholder for a beautiful image indicating studying or medical field -->
+                        <div class="illustration-placeholder">
+                            <span class="icon-large">📚</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Bottom Ad Banner -->
+    <div class="container">
+        <div class="ad-region ad-banner">
+            Advertisement Space (728x90)
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="img/fuuast_logo_transparent.png" alt="FUUAST Logo" class="logo-img-small"> <strong>Pharm D
+                        Portal</strong>
+                    <p>Empowering pharmacy students with accessible, high-quality educational resources.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <a href="index.html">Home</a>
+                    <a href="pages/student_notes.html">Student Notes</a>
+                    <a href="pages/videos.html">Video Clips</a>
+                    <a href="pages/exam_predictor.html">Exam Predictor</a>
+                    <a href="pages/teacher_guide.html">Teacher Guide</a>
+                    <a href="pages/upload.html">Upload Content</a>
+                    <a href="pages/privacy.html">Privacy Policy</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2026 Pharm D Portal. For educational purposes only.
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+
+</html>
