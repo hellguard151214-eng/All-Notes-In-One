@@ -902,7 +902,7 @@ p {
 
     .dropdown-content {
         position: static;
-        transform: none;
+        transform: none !important;
         visibility: visible;
         opacity: 1;
         box-shadow: none;
